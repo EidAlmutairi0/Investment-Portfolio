@@ -17,7 +17,7 @@ const NavBar = () => {
         {location.pathname !== "/register" && (
           <button
             type="button"
-            onClick={() => navigate("/register")}
+            onClick={() => navigate("/dashboard")}
             className="primary_btn  text-sm sm:text-lg font-cairo"
           >
             تسجيل الدخول
