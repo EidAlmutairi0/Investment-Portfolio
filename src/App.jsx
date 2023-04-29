@@ -1,9 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Landing from "./components/Landing";
-import Registration from "./components/Registration";
+import Landing from "./Pages/Landing";
+import Registration from "./Pages/Registration";
 import NavBar from "./components/navBar";
-
 function App() {
   return (
     <BrowserRouter>
