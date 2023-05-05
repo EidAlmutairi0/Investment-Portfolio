@@ -6,11 +6,15 @@ const PieChart = (props) => {
   return (
     <ResponsivePie
       data={props.data}
-      colors={{ scheme: "accent" }}
-      margin={{ right: 80, left: 80 }}
+      margin={{ top: 0, right: 80, bottom: 10, left: 80 }}
+      padAngle={0.7}
+      fit={true}
+      colors={{ scheme: "paired" }}
       cornerRadius={3}
+      activeOuterRadiusOffset={8}
       borderWidth={1}
-      sortByValue={true}
+      arcLabel={(e) => `${e.value}%`}
+      arcLinkLabelsTextOffset={20}
       borderColor={{
         from: "color",
         modifiers: [["darker", 0.2]],
@@ -20,10 +24,10 @@ const PieChart = (props) => {
       arcLinkLabelsThickness={2}
       arcLinkLabelsColor={{ from: "color" }}
       arcLabelsSkipAngle={10}
-      arcLabelsTextColor={{
-        from: "color",
-        modifiers: [["darker", 2]],
-      }}
+      arcLabelsTextColor="#ffffff"
+      animate={true}
+      motionConfig="default"
+      transitionMode="startAngle"
     />
   );
 };
