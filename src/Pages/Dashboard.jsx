@@ -1,5 +1,4 @@
 import React from "react";
-
 import PieChart from "../components/PieChart";
 
 import StockList from "../components/StockList";
@@ -66,16 +65,35 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="w-full sm:h-screen bg-[#f9fbfe] my-10 rounded-lg p-5  flex-col  flex">
-      <div className=" justify-center items-center gap-5 bg-[#ffffff] rounded-xl  w-[100%] flex sm:flex-row flex-col">
-        <div className=" sm:w-1/3 w-full  flex flex-col sm:[400px] h-[200px] justify-center gap-10">
-          <h1 className="text-center font-cairo text-2xl font-bold text-primary ">
-            اداء محفظتك هو :
-          </h1>
-          <h1 className="text-center font-cairo text-6xl font-bold text-green-600  ">
-            7.2%
-          </h1>
+    <div className="w-full h-[100%]  rounded-xl p-5   flex-col  flex">
+      <div className=" justify-center shadow-sm items-center gap-5 bg-[#ffffff] rounded-xl  w-[100%] flex sm:flex-row flex-col">
+        <div className=" sm:w-1/3 w-full  flex flex-col sm:[400px] h-[200px]  mx-auto text-center  justify-center px-10 m-auto gap-5">
+          <div className="flex flex-row gap-3 justify-between text-start">
+            <h1 className=" font-cairo text-xl flex-1  font-bold text-primary    ">
+              التكلفة:
+            </h1>
+            <h1 className=" font-cairo text-2xl flex-1 font-bold  text-primary">
+              126350 ريال
+            </h1>
+          </div>
+          <div className="flex flex-row gap-3 justify-between text-start">
+            <h1 className=" font-cairo text-xl font-bold flex-1 text-primary ">
+              الربح/الخسارة:
+            </h1>
+            <h1 className=" font-cairo flex text-2xl  flex-1 font-bold  ">
+              7.2%
+            </h1>
+          </div>
+          <div className="flex flex-row gap-3 justify-between text-start">
+            <h1 className=" font-cairo text-xl font-bold flex-1 text-primary">
+              القيمة السوقية:
+            </h1>
+            <h1 className=" font-cairo text-2xl font-bold flex-1 text-primary">
+              126350 ريال
+            </h1>
+          </div>
         </div>
+        <div className="w-[1px] h-[90%] bg-gray-200" />
         <div className=" sm:w-1/3 w-full sm:h-[400px] h-[300px] rounded-lg  flex flex-col  ">
           <h1 className="text-center font-cairo  text-xl font-bold self-start  px-10 py-5 text-primary ">
             المحفظة الحالية :
@@ -84,6 +102,8 @@ const Dashboard = () => {
             <PieChart data={setData(stocks)}></PieChart>
           </div>
         </div>
+        <div className="w-[1px] h-[90%] bg-gray-200" />
+
         <div className=" sm:w-1/3 w-full sm:h-[400px] h-[300px] rounded-lg flex flex-col  ">
           <h1 className="text-center font-cairo  text-xl font-bold self-start  px-10 py-5 text-primary ">
             المحفظة المتوازنة :

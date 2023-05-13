@@ -6,7 +6,7 @@ const PieChart = (props) => {
   return (
     <ResponsivePie
       data={props.data}
-      margin={{ top: 0, right: 80, bottom: 10, left: 80 }}
+      margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
       padAngle={0.7}
       fit={true}
       colors={{ scheme: "paired" }}

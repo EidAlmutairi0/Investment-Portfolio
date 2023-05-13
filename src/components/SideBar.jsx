@@ -1,8 +1,8 @@
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import { Box, Typography, useTheme } from "@mui/material";
+import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
+import WalletIcon from "@mui/icons-material/Wallet";
+import { Box, useTheme } from "@mui/material";
 import React, { useState } from "react";
-import { Menu, MenuItem, Sidebar } from "react-pro-sidebar";
+
 import appLogoWithText from "../assets/InvestmentPortfolioLogoWithText.png";
 import { tokens } from "../theme";
 
@@ -12,74 +12,90 @@ const SideBar = (props) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("dashboard");
+  const [selected, setSelected] = useState(0);
   return (
-    <Box
-      sx={{
-        "& .pro-sidebar-inner": {
-          background: `${colors.primary[400]} !important`,
-        },
-        "& .pro-icon-wrapper": {
-          backgroundColor: "transparent !important",
-        },
-        "& .pro-inner-item": {
-          padding: "5px 35px 5px 20px !important",
-        },
-        "& .pro-inner-item:hover": {
-          color: "#868dfb !important",
-        },
-        "& .pro-menu-item.active": {
-          color: "#6870fa !important",
-        },
+    <div
+      className=" relative shadow-lg bg-white"
+      style={{
+        width: "20%",
       }}
     >
-      <Sidebar collapsed={isCollapsed}>
-        <Menu iconShape="square">
-          <img
-            src={appLogoWithText}
-            alt="logo"
-            className="p-5  flex cursor-pointer"
-            onClick={() => navigate("/")}
+      <div>
+        <img
+          src={appLogoWithText}
+          alt="logo"
+          className="p-10 py-10  flex cursor-pointer"
+          onClick={() => {
+            navigate("/");
+            setSelected(0);
+          }}
+        />
+
+        <Box className="py-5">
+          <Item
+            title="لوحة التحكم"
+            to="/dashboard"
+            index={0}
+            icon={<SpaceDashboardIcon />}
+            selected={selected}
+            setSelected={setSelected}
           />
 
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-            <Item
-              title="Dashboard"
-              to="/dashboard"
-              icon={<HomeOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
-            <Item
-              title="Manage Team"
-              to="/team"
-              icon={<PeopleOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-          </Box>
-        </Menu>
-      </Sidebar>
-    </Box>
+          <Item
+            title="مكونات المحفظة"
+            to="/wallet"
+            index={1}
+            icon={<WalletIcon />}
+            selected={selected}
+            setSelected={setSelected}
+          />
+        </Box>
+      </div>
+      <div
+        className="text-red-500 absolute bottom-10 left-1 w-[100%] text-center font-cairo text-lg cursor-pointer"
+        onClick={() => props.setUser(false)}
+      >
+        تسجيل الخروج
+      </div>
+    </div>
   );
 };
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
+const Item = ({ title, to, icon, selected, setSelected, index }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
-    <MenuItem
-      active={selected === title}
-      style={{
-        color: colors.grey[100],
-      }}
-      onClick={() => setSelected(title)}
-      icon={icon}
+    <Link
+      to={to}
+      onClick={() => setSelected(index)}
+      className={
+        "flex  py-3 mx-3 px-5 hover:bg-none" +
+        (selected == index ? " bg-primary rounded-xl bg-opacity-100" : "")
+      }
+      component={<Link />}
     >
-      <Typography>{title}</Typography>
-      <Link to={to} />
-    </MenuItem>
+      <div
+        className={
+          (selected == index ? "text-white" : " text-gray-500") + " text-lg"
+        }
+      >
+        {icon}
+      </div>
+      <div
+        className={
+          "flex ps-2" +
+          (selected == index ? " text-white" : " text-gray-500") +
+          " text-lg"
+        }
+        style={{
+          fontFamily: "Cairo",
+          fontSize: "1rem",
+          fontWeight: "bold",
+        }}
+      >
+        {title}
+      </div>
+    </Link>
   );
 };
 export default SideBar;
