@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PieChart from "../components/PieChart";
 
 import StockList from "../components/StockList";
 
 const Dashboard = () => {
-  const totalValue = 2380;
+  const [totalValue, setTotalValue] = useState(0);
+
+  const cost = 1000;
+  const profit = 7.2;
+  const marketValue = 12654350;
+
+  useEffect(() => {
+    setTotalValue(2380);
+  }, []);
+  const change = 0.5;
   const stocks = [
     {
       name: "VOO",
@@ -66,46 +75,53 @@ const Dashboard = () => {
 
   return (
     <div className="w-full h-[100%]  rounded-xl p-5   flex-col  flex">
-      <div className=" justify-center shadow-sm items-center gap-5 bg-[#ffffff] rounded-xl  w-[100%] flex sm:flex-row flex-col">
-        <div className=" sm:w-1/3 w-full  flex flex-col sm:[400px] h-[200px]  mx-auto text-center  justify-center px-10 m-auto gap-5">
-          <div className="flex flex-row gap-3 justify-between text-start">
-            <h1 className=" font-cairo text-xl flex-1  font-bold text-primary    ">
+      <div className=" justify-center  items-center gap-5  rounded-xl  w-[100%] flex sm:flex-row flex-col">
+        <div className=" sm:w-1/3 w-full bg-primary shadow-lg shadow-inner shadow-primary flex flex-col sm:[400px] h-full  mx-auto   justify-center px-10 m-auto gap-5 rounded-3xl">
+          <div className="flex flex-row gap-3 justify-between ">
+            <h1 className=" font-cairo  flex-1  font-bold text-white 2xl:text-xl text-lg  ">
               التكلفة:
             </h1>
-            <h1 className=" font-cairo text-2xl flex-1 font-bold  text-primary">
-              126350 ريال
+            <h1 className=" font-cairo text-xl flex-1 font-bold text-center text-white">
+              {totalValue} ريال
             </h1>
           </div>
-          <div className="flex flex-row gap-3 justify-between text-start">
-            <h1 className=" font-cairo text-xl font-bold flex-1 text-primary ">
+          <div className="flex flex-row  ">
+            <h1 className=" font-cairo text-lg font-bold flex-1  text-white ">
               الربح/الخسارة:
             </h1>
-            <h1 className=" font-cairo flex text-2xl  flex-1 font-bold  ">
-              7.2%
+            <h1
+              dir="ltr"
+              className={` font-cairo flex text-xl flex-1 text-center font-bold  justify-center  ${
+                profit > 0
+                  ? "text-green-400"
+                  : profit < 0
+                  ? "text-red-400"
+                  : "text-white"
+              } `}
+            >
+              {profit}%
             </h1>
           </div>
-          <div className="flex flex-row gap-3 justify-between text-start">
-            <h1 className=" font-cairo text-xl font-bold flex-1 text-primary">
+          <div className="flex flex-row gap-3 justify-between ">
+            <h1 className=" font-cairo text-lg font-bold flex-1 text-white ">
               القيمة السوقية:
             </h1>
-            <h1 className=" font-cairo text-2xl font-bold flex-1 text-primary">
-              126350 ريال
+            <h1 className=" font-cairo text-xl font-bold flex-1 text-center overflow-clip h-10 text-white">
+              12654350 ريال
             </h1>
           </div>
         </div>
-        <div className="w-[1px] h-[90%] bg-gray-200" />
         <div className=" sm:w-1/3 w-full sm:h-[400px] h-[300px] rounded-lg  flex flex-col  ">
-          <h1 className="text-center font-cairo  text-xl font-bold self-start  px-10 py-5 text-primary ">
+          <h1 className="text-center font-cairo  text-xl font-bold self-start  px-10 py-5 text-black ">
             المحفظة الحالية :
           </h1>
           <div className="flex-1  w-full">
             <PieChart data={setData(stocks)}></PieChart>
           </div>
         </div>
-        <div className="w-[1px] h-[90%] bg-gray-200" />
 
         <div className=" sm:w-1/3 w-full sm:h-[400px] h-[300px] rounded-lg flex flex-col  ">
-          <h1 className="text-center font-cairo  text-xl font-bold self-start  px-10 py-5 text-primary ">
+          <h1 className="text-center font-cairo  text-xl font-bold self-start  px-10 py-5 text-black ">
             المحفظة المتوازنة :
           </h1>
           <div className="flex-1  w-full">

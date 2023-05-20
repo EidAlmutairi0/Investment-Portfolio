@@ -22,7 +22,7 @@ function App() {
           <div className="main">
             <div className="gradient" />
           </div>
-          <div className="app" dir="rtl">
+          <div>
             {!user ? (
               <div className="app" dir="rtl">
                 <NavBar />
@@ -33,10 +33,13 @@ function App() {
                 </Routes>
               </div>
             ) : (
-              <div className="flex w-screen h-screen overflow-hidden ">
+              <div
+                className="flex w-screen h-screen overflow-hidden  "
+                dir="rtl"
+              >
                 <SideBar setUser={setUser} />
 
-                <div className="flex  h-screen w-full overflow-scroll ">
+                <div className="flex h-screen w-full overflow-scroll p-5 z-10 bg-[#f5f4f7]">
                   <Routes>
                     <Route path="/dashboard" exact Component={Dashboard} />
                     <Route path="/wallet" exact Component={Wallet} />
