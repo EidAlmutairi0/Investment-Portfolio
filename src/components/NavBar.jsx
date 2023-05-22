@@ -18,7 +18,7 @@ const NavBar = () => {
           <button
             type="button"
             onClick={() => navigate("/dashboard")}
-            className="primary_btn  text-sm sm:text-lg font-cairo"
+            className="primary_btn  text-sm sm:text-lg font-ibmsans"
           >
             تسجيل الدخول
           </button>

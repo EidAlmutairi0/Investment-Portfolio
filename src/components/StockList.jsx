@@ -66,12 +66,12 @@ const StockList = () => {
 
   return (
     <div className="w-full h-[100%] my-5 shadow   rounded-xl p-5 overflow-hidden   flex-col  flex bg-white">
-      <div className="text-start p-5 font-cairo text-2xl font-bold text-primary ">
+      <div className="text-start p-5 font-ibmsans text-2xl font-bold text-primary ">
         أكبر مكونات المحفظة
       </div>
       <div className="p-5 flex  h-[100%] w-[100%] overflow-hidden  ">
         <table className="w-full text-md  text-gray-500 text-center ">
-          <thead className="text-s text-gray-700 font-cairo border-b ">
+          <thead className="text-s text-gray-700 font-ibmsans border-b ">
             <tr>
               <th scope="col" className="px-6 py-3 text-start ">
                 الشركة

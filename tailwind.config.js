@@ -12,6 +12,8 @@ export default {
         satoshi: ["Satoshi", "sans-serif"],
         sst: ["SST", "sans-serif"],
         inter: ["Inter", "sans-serif"],
+        tajawal: ["Tajawal", "sans-serif"],
+        ibmsans: ["IBM Plex Sans Arabic", "sans-serif"],
       },
     },
   },

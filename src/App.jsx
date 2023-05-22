@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./Pages/Dashboard";
 import { ColorModeContext, useMode } from "./theme";
 
@@ -28,8 +28,8 @@ function App() {
                 <NavBar />
                 <Routes>
                   <Route path="/" Component={Landing} />
-                  <Route path="*" Component={Landing} />
                   <Route path="/register" exact Component={Registration} />
+                  <Route path="*" element={<Navigate to={"/"} />} />
                 </Routes>
               </div>
             ) : (
@@ -43,7 +43,6 @@ function App() {
                   <Routes>
                     <Route path="/dashboard" exact Component={Dashboard} />
                     <Route path="/wallet" exact Component={Wallet} />
-
                     <Route path="*" Component={Dashboard} />
                   </Routes>
                 </div>
