@@ -3,62 +3,91 @@ import ReactApexChart from "react-apexcharts";
 
 const LineChar = () => {
   const dates = [];
+  const maraker = {};
+  const prices = [10, 41, 35, 51, 49, 62, 69, 91, 148, 77];
 
   const data = {
     series: [
       {
-        data: [
-          [1327359600000, 30.95],
-          [1327446000000, 31.34],
-          [1327532400000, 31.18],
-          [1327618800000, 31.05],
-          [1327878000000, 31.0],
-          [1327964400000, 30.95],
-          [1328050800000, 31.24],
-          [1328137200000, 31.29],
-          [1328223600000, 31.85],
-
-          [1361487600000, 38.55],
-          [1361746800000, 38.11],
-          [1361833200000, 38.59],
-          [1361919600000, 50.6],
-        ],
+        data: prices,
       },
     ],
+
     options: {
-      chart: {
-        id: "area",
-        type: "area",
-        height: 350,
-        zoom: {
-          autoScaleYaxis: true,
+      xaxis: {
+        axisBorder: {
+          show: false,
+        },
+        labels: {
+          show: false,
         },
       },
+      yaxis: {
+        labels: {
+          show: false,
+        },
+      },
+      grid: {
+        show: false,
+      },
 
+      markers: {
+        discrete: [
+          {
+            seriesIndex: 0,
+            dataPointIndex: prices.length - 1,
+            fillColor: "blue",
+            strokeColor: "#fff",
+            size: 10,
+            shape: "circle", // "circle" | "square" | "rect"
+          },
+        ],
+      },
+      chart: {
+        height: 350,
+        type: "line",
+        toolbar: {
+          show: false,
+        },
+        zoom: {
+          enabled: false,
+        },
+        animations: {
+          enabled: true,
+          easing: "easeinout",
+          speed: 800,
+          animateGradually: {
+            enabled: true,
+            delay: 150,
+          },
+          dynamicAnimation: {
+            enabled: true,
+            speed: 350,
+          },
+        },
+      },
+      legend: {
+        show: false,
+      },
       dataLabels: {
         enabled: false,
       },
-      markers: {
-        size: 0,
-        style: "hollow",
-      },
-      xaxis: {
-        type: "datetime",
-        min: new Date("01 Mar 2012").getTime(),
-        tickAmount: 6,
-      },
-      tooltip: {
-        x: {
-          format: "dd MMM yyyy",
-        },
+      stroke: {
+        curve: "smooth",
+        width: 6,
       },
       fill: {
         type: "gradient",
         gradient: {
-          shadeIntensity: 1,
-          opacityFrom: 0.7,
-          opacityTo: 0.9,
-          stops: [0, 100],
+          shade: "dark",
+          type: "horizontal",
+          shadeIntensity: 0.5,
+          gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [0, 50, 100],
+          colorStops: [],
         },
       },
     },
@@ -71,7 +100,7 @@ const LineChar = () => {
           <ReactApexChart
             options={data.options}
             series={data.series}
-            type="area"
+            type="line"
             width="500"
           />
         </div>
